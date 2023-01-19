@@ -50,8 +50,9 @@ def pre_scan_handler(_target: str) -> list:
 
 def logger(*args, fname: str, _dt: str):
     target_dir = './data/'+_dt+'/'
-    if not os.path.exists(target_dir):
+    if not os.path.exists('./data/'):
         os.mkdir('./data/')
+    if not os.path.exists(target_dir):
         os.mkdir(target_dir)
     fname = target_dir+fname
     codecs.open(fname, "w", encoding='utf8').close()
