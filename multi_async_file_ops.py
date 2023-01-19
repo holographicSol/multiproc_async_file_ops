@@ -60,7 +60,6 @@ def logger(*args, fname: str, _dt: str):
 
 
 if __name__ == '__main__':
-    global _buffer
     _target = 'D:\\Pictures\\'
     _proc_max = 8
 
@@ -71,6 +70,7 @@ if __name__ == '__main__':
     files, x_files = pre_scan_handler(_target=_target)
     print('[pre-scan time]', time.perf_counter() - t)
 
+    # uncomment for logging
     logger(*files, fname='pre_scan_files_'+dt+'.txt', _dt=dt)
     logger(*x_files, fname='pre_scan_x_files_'+dt+'.txt', _dt=dt)
 
@@ -86,7 +86,8 @@ if __name__ == '__main__':
     print('[multi-process+async ops time]', time.perf_counter()-t)
 
     results = chunk_handler.un_chunk_data(results, depth=1)
+
+    # uncomment for logging
     logger(*results, fname='results_'+dt+'.txt', _dt=dt)
 
     print('[complete]')
-
